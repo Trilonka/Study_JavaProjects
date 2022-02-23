@@ -60,6 +60,10 @@ public class DynamicArray {
             changeArray(newCapacity);
     }
 
+    public int size() {
+        return size;
+    }
+
     private void changeArray(int newCapacity) {
         capacity = newCapacity;
         size = Math.min(capacity, size);
