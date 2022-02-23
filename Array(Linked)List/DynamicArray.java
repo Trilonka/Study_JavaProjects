@@ -50,10 +50,8 @@ public class DynamicArray {
     public void resize(int newSize) {
         if(newSize < size)
             for(int i = newSize; i<size; ++i) array[i] = 0;
-
         if(newSize > capacity)
             reserve(newSize);
-
         size = newSize;
     }
 

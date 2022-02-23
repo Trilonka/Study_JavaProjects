@@ -3,19 +3,17 @@ import java.util.Objects;
 public class ForwardList {
     private Node headNode;
     private int size;
-    //add(value, index), remove(index), get(index), clear(), getHead(), addToHead(value) //int
 
     public void add(int value, int index) {
         Objects.checkIndex(index, size+1);
-        Node newNode = new Node(value);
+        Node newNode = new Node(value, headNode);
         if(index == 0) {
-            newNode.setNextNode(headNode);
             headNode = newNode;
         }
         else {
             Node pomNode = getPrevNode(index);
-            newNode.setNextNode(pomNode.getNextNode());
-            pomNode.setNextNode(newNode);
+            newNode.nextNode = pomNode.nextNode;
+            pomNode.nextNode = newNode;
         }
         ++size;
     }
@@ -27,20 +25,18 @@ public class ForwardList {
     public void remove(int index) {
         Objects.checkIndex(index, size);
         if(index == 0)
-            headNode = headNode.getNextNode();
+            headNode = headNode.nextNode;
         else {
             Node pomNode = getPrevNode(index);
-            pomNode.setNextNode(pomNode.getNextNode().getNextNode());
+            pomNode.nextNode = pomNode.nextNode.nextNode;
         }
         --size;
     }
 
     public int get(int index) {
         Objects.checkIndex(index, size);
-        Node pomNode = headNode;
-        for (int i = 0; i < index; i++)
-            pomNode = pomNode.getNextNode();
-        return pomNode.getValue();
+        Node pomNode = getPrevNode(index+1);
+        return pomNode.value;
     }
 
     public int getHead() {
@@ -52,10 +48,14 @@ public class ForwardList {
         size = 0;
     }
 
+    public int size() {
+        return size;
+    }
+
     private Node getPrevNode(int index) {
         Node pomNode = headNode;
         for (int i = 0; i < index - 1; i++)
-            pomNode = pomNode.getNextNode();
+            pomNode = pomNode.nextNode;
         return pomNode;
     }
 
@@ -65,8 +65,8 @@ public class ForwardList {
         builder.append("[");
         Node pomNode = headNode;
         for(int i = 0; i<size; i++) {
-            builder.append(pomNode.getValue());
-            pomNode = pomNode.getNextNode();
+            builder.append(pomNode.value);
+            pomNode = pomNode.nextNode;
             if(i == size-1) {
                 return builder.append("]").toString();
             }
@@ -74,25 +74,14 @@ public class ForwardList {
         }
         return builder.append("]").toString();
     }
-}
 
-class Node {
-    private int value;
-    private Node nextNode;
+    private static class Node {
+        int value;
+        Node nextNode;
 
-    public Node(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setNextNode(Node nextNode) {
-        this.nextNode = nextNode;
-    }
-
-    public Node getNextNode() {
-        return nextNode;
+        public Node(int value, Node nextNode) {
+            this.value = value;
+            this.nextNode = nextNode;
+        }
     }
 }
