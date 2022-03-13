@@ -1,0 +1,23 @@
+<AnimalsDataFile>
+    <carnivoreAnimals>
+        <Carnivore>
+            <name>Lion</name>
+            <amount>4</amount>
+        </Carnivore>
+        <Carnivore>
+            <name>Bear</name>
+            <amount>2</amount>
+        </Carnivore>
+    </carnivoreAnimals>
+
+    <herbivoreAnimals>
+        <Herbivore>
+            <name>Zebra</name>
+            <amount>3</amount>
+        </Herbivore>
+        <Herbivore>
+            <name>Elephant</name>
+            <amount>2</amount>
+        </Herbivore>
+    </herbivoreAnimals>
+</AnimalsDataFile>
