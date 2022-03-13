@@ -63,6 +63,11 @@ public class Zoo {
         }
     }
 
+    /**
+     * Method for define wich mapper to use
+     *
+     * @param configType type of file with animals info
+     */
     private ObjectMapper defineMapper(String configType) {
         switch (configType) {
             case "json":
