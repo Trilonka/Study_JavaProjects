@@ -12,8 +12,8 @@ public class Main {
             scannersCount = Integer.parseInt(parsedArgs.getOptionValue("t"));
         }
 
-        Set<String> parsedHosts = HostsAndPortsScanner.parseHosts(hosts);
-        Set<Integer> parsedPorts = HostsAndPortsScanner.parsePorts(ports);
+        Set<Host> parsedHosts = HostsAndPortsParser.parseHosts(hosts);
+        Set<Integer> parsedPorts = HostsAndPortsParser.parsePorts(ports);
 
         scannersCount = Math.min(parsedHosts.size(), scannersCount);
         Scanner[] scanners = new Scanner[scannersCount];
@@ -21,12 +21,20 @@ public class Main {
             scanners[scannerIndex] = new Scanner(parsedPorts);
         }
         int scannerIndex = 0;
-        for(String host : parsedHosts) {
+        for(Host host : parsedHosts) {
             scanners[scannerIndex%scannersCount].addHost(host);
             scannerIndex++;
         }
         for(Scanner scanner : scanners) {
             scanner.start();
         }
+        for(Scanner scanner : scanners) {
+            try {
+                scanner.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        OpenHostsPortsDataFile.writeToDataFile(parsedHosts);
     }
 }

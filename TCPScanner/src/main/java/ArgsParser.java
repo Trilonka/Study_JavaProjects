@@ -8,9 +8,9 @@ public class ArgsParser {
         Option portsOption = new Option("p",true, "Ports");
         Option threadsCountOption = new Option("t",true, "ThreadsCount");
 
-        setOptionParams(hostsOption, "hosts: ");
-        setOptionParams(portsOption, "ports ");
-        setOptionParams(threadsCountOption, "threadsCount ");
+        setOptionParams(hostsOption, "hosts");
+        setOptionParams(portsOption, "ports");
+        setOptionParams(threadsCountOption, "threadsCount");
         threadsCountOption.setOptionalArg(true);
 
         Options options = new Options();
@@ -24,6 +24,7 @@ public class ArgsParser {
             commandLine = cmdLineParser.parse(options, args);
         } catch (ParseException e) {
             printHelp(options);
+            System.exit(1);
         }
         return commandLine;
     }
