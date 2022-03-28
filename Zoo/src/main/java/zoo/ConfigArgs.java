@@ -6,9 +6,9 @@ import lombok.Getter;
 @Getter
 public class ConfigArgs {
 
-    @Parameter(names = "-configfile=")
+    @Parameter(names = "-configfile")
     private String configFile;
 
-    @Parameter(names = "-configtype=")
+    @Parameter(names = "-configtype")
     private String configType;
 }
