@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Set;
 
 public class OpenHostsPortsDataFile {
-    private final Set<Host> hosts;
+    private Set<Host> hosts;
 
     private OpenHostsPortsDataFile(Set<Host> hosts) {
         this.hosts = hosts;

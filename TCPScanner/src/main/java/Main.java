@@ -12,8 +12,8 @@ public class Main {
             scannersCount = Integer.parseInt(parsedArgs.getOptionValue("t"));
         }
 
-        Set<Host> parsedHosts = HostsAndPortsParser.parseHosts(hosts);
-        Set<Integer> parsedPorts = HostsAndPortsParser.parsePorts(ports);
+        Set<Host> parsedHosts = Host.parse(hosts);
+        Set<Port> parsedPorts = Port.parse(ports);
 
         scannersCount = Math.min(parsedHosts.size(), scannersCount);
         Scanner[] scanners = new Scanner[scannersCount];

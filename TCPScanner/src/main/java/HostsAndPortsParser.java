@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class HostsAndPortsParser {
-    public static Set<Host> parseHosts(String hosts) {
+    /*public static Set<Host> parseHosts(String hosts) {
         String[] parsedHosts = hosts.split(",");
         Set<Host> allHosts = new HashSet<>();
         String[] splitHost;
@@ -51,5 +51,5 @@ public class HostsAndPortsParser {
             }
         }
         return allPorts;
-    }
+    }*/
 }

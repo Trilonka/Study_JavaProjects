@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Scanner extends Thread {
-    private final Set<Host> hosts;
-    private final Set<Integer> ports;
+    private Set<Host> hosts;
+    private Set<Port> ports;
 
-    public Scanner(Set<Integer> ports) {
+    public Scanner(Set<Port> ports) {
         hosts = new HashSet<>();
         this.ports = ports;
     }
@@ -20,11 +20,11 @@ public class Scanner extends Thread {
     @Override
     public void run() {
         for(Host host : hosts) {
-            for(int port : ports) {
+            for(Port port : ports) {
                 try {
                     InetAddress address = InetAddress.getByName(host.getHostName());
                     SocketAddress socketAddress;
-                    socketAddress = new InetSocketAddress(address, port);
+                    socketAddress = new InetSocketAddress(address, port.getAddress());
                     Socket socket = new Socket();
                     socket.connect(socketAddress, 10);
                     host.addOpenPort(port);
