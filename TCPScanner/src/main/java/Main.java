@@ -44,7 +44,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        String dataFilePath = "src/main/resources/openHostsPorts.json";
+        String dataFilePath = "TCPScanner/src/main/resources/openHostsPorts.json";
         OpenHostsPortsDataFile.writeToDataFile(parsedHosts, dataFilePath);
     }
 }
