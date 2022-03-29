@@ -2,6 +2,9 @@ import org.apache.commons.cli.*;
 
 import java.io.PrintWriter;
 
+/**
+ * Parser arguments of command line, scan hosts, ports and threadsCount parameters
+ */
 public class ArgsParser {
     public static CommandLine parseArgs(String[] args) {
         Option hostsOption = new Option("h",true, "Hosts");
@@ -22,6 +25,9 @@ public class ArgsParser {
         CommandLine commandLine = null;
         try {
             commandLine = cmdLineParser.parse(options, args);
+            if(!commandLine.hasOption("h") || !commandLine.hasOption("p")) {
+                throw new ParseException("Options -h and -p expected");
+            }
         } catch (ParseException e) {
             printHelp(options);
             System.exit(1);

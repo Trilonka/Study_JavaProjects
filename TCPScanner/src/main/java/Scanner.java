@@ -4,6 +4,9 @@ import java.net.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Scans open ports on the given list of hosts
+ */
 public class Scanner extends Thread {
     private Set<Host> hosts;
     private Set<Port> ports;

@@ -3,7 +3,6 @@ package zoo;
 import com.beust.jcommander.JCommander;
 
 public class Main {
-
     public static void main(String[] argv) {
         // Parse arguments
         ConfigArgs args = new ConfigArgs();

@@ -1,6 +1,9 @@
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Class - port representation
+ */
 public class Port {
     private Integer address;
 

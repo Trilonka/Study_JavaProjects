@@ -1,6 +1,9 @@
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Class - host representation
+ */
 public class Host {
     private String hostName;
     private Set<Port> openPorts;

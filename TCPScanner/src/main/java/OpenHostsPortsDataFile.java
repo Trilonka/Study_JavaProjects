@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
+/**
+ * Class for representing data about hosts, used to write data to a json file
+ */
 public class OpenHostsPortsDataFile {
     private Set<Host> hosts;
 
@@ -15,12 +18,13 @@ public class OpenHostsPortsDataFile {
         return hosts;
     }
 
-    public static void writeToDataFile(Set<Host> hosts) {
+    public static void writeToDataFile(Set<Host> hosts, String dataFilePath) {
         ObjectMapper mapper = new ObjectMapper();
         OpenHostsPortsDataFile dataFile = new OpenHostsPortsDataFile(hosts);
         try {
-            mapper.writeValue(new File("C:/TCPScanner/src/main/resources/openHostsPorts.json"), dataFile);
+            mapper.writeValue(new File(dataFilePath), dataFile);
         } catch (IOException e) {
+            System.out.println("Wrong dataFilePath. No data was written.");
             e.printStackTrace();
         }
     }
